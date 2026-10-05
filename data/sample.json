@@ -1,9 +1,24 @@
 {
-  "event_id": "092106-018-sample-001",
+  "event_id": "260920-018-sample-001",
   "event_type": "REFERRAL_RECEIVED",
   "aggregate_type": "referral_case",
-  "aggregate_id": "county_referral_loop-001",
+  "aggregate_id": "case-20260920-sample-001",
   "occurred_at": "2026-09-20T15:00:00+08:00",
   "version": 1,
-  "summary": "登记县域转诊闭环的首条领域记录"
+  "summary": "磻溪镇卫生院上转胸闷待查患者，登记县域转诊闭环首条领域记录",
+  "actor": {
+    "id": "doc-zhang-021",
+    "name": "张医生",
+    "role": "sending_doctor",
+    "org": "磻溪镇卫生院"
+  },
+  "from_org": "磻溪镇卫生院",
+  "to_org": "福鼎市医院",
+  "specialty": "心血管内科",
+  "triage_level": "urgent",
+  "patient_ref": "P-2026-0001",
+  "patient_name": "钟阿明",
+  "contact_phone": "13800001001",
+  "chief_complaint": "胸闷待查",
+  "expected_arrival_at": "2026-09-20T17:30:00+08:00"
 }

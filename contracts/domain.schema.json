@@ -20,10 +20,26 @@
       "type": "string",
       "enum": [
         "REFERRAL_RECEIVED",
+        "REFERRAL_DUPLICATE_LINKED",
+        "APPOINTMENT_SCHEDULED",
+        "APPOINTMENT_RESCHEDULED",
+        "PATIENT_TRIP_RECORDED",
         "ARRIVAL_CONFIRMED",
         "RISK_ESCALATED",
+        "OBSERVATION_DIVERGENCE_RECORDED",
+        "EXAM_CONFLICT_DETECTED",
+        "GREEN_CHANNEL_PREEMPTED",
+        "CAPACITY_BLOCKED",
+        "ESCORT_TASK_ASSIGNED",
         "CARE_TASK_COMPLETED",
-        "RETURN_ACCEPTED"
+        "ADMISSION_DECIDED",
+        "CONTACT_ESCALATION_OPENED",
+        "CONTACT_ESCALATION_RESOLVED",
+        "RETURN_PLANNED",
+        "RETURN_ACCEPTED",
+        "FOLLOWUP_SCHEDULED",
+        "FOLLOWUP_DUE",
+        "FOLLOWUP_COMPLETED"
       ]
     },
     "aggregate_type": {
@@ -50,6 +66,32 @@
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "actor": {
+      "type": "object",
+      "description": "发起事件的医护人员/系统；临床决定事件必须为医护角色",
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "name": { "type": "string" },
+        "role": {
+          "type": "string",
+          "enum": [
+            "sending_doctor",
+            "receiving_doctor",
+            "county_center_nurse",
+            "escort_nurse",
+            "patient_family",
+            "system"
+          ]
+        },
+        "org": { "type": "string" }
+      },
+      "required": ["id", "role"]
+    },
+    "linked_event_ids": {
+      "type": "array",
+      "description": "关联的前序事件；更正不覆盖原记录，只追加后继记录",
+      "items": { "type": "string", "minLength": 1 }
     }
   },
   "additionalProperties": true
